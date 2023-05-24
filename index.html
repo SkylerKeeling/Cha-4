@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <title>Quiz</title>
+  </head>
+  <body>
+    <section class="container" id="startPage">
+      <div id="startScreen">
+        <h1 class="flex">Code Quiz</h1>
+        <button id="startButton" type="button">Start</button>
+      </div>
+    </section>
+    <section>
+      <h2 class="top-left" id="highScore">View highscore</h2>
+      <h2 class="top-left" id="reset">Reset</h2>
+      <h2 class="top-right">Time:</h2>
+    </section>
+    <article class="quizPage" id="quizPageOne">
+      <h2>How do you write "Hello World" in an alert box?</h2>
+      <ul class="wrap">
+        <button onclick="returnFalse()" class="box a1" button="radio" id="false">msgBox("Hello World");</button>
+        <button onclick="returnFalse()" class="box a2" button="radio" id="false">alertBox("Hello World");</button>
+        <button onclick="returnFalse()" class="box a3" button="radio" id="false">msg("Hello World");</button>
+        <button onclick="returnTrue()" class="box a4" button="radio" id="true">alert("Hello world")</button>
+      </ul>
+    </article>
+    <article class="quizPage" id="quizPageTwo">
+      <h2>How do you create a function in JavaScript?</h2>
+      <ul class="wrap">
+        <button class="box " button="radio" id="false"></li>>function = myFunction()</button>
+        <button class="box" button="radio" id="false"></li>>function:myFunction()</button>
+        <button class="box" button="radio" id="true"></li>>function myFunction()</button>
+        <button class="box" button="radio" id="false"></li>>function-myFunction()</button>
+      </ul>
+    </article>
+    <article class="quizPage" id="quizPageThree">
+      <h2>How do you call a function named "myFunction"?</h2>
+      <ul class="wrap">
+        <button class="box" button="radio" id="false"></li>>call myFunction()</li>
+        <li class="box" button="radio" id="true"></li>>myFunction()</li>
+        <li class="box" button="radio" id="false"></li>>call.myFunction()</li>
+        <li class="box" button="radio" id="false"></li>>call function myFunction()</li>
+      </ul>
+    </article>
+    <article class="quizPage" id="quizPageFour">
+      <h2>
+        How to write an IF statement for executing some code if "i" is NOT equal
+        to 27?
+      </h2>
+      <ul class="wrap">
+        <li class="box" button="radio" id="false"></li>>if (i <> 27)</li>
+        <li class="box" button="radio" id="false"></li>>if i <> 27</li>
+        <li class="box" button="radio" id="false"></li>>if i =! 27</li>
+        <li class="box" button="radio" id="true"></li>>if (i != 27)</li>
+      </ul>
+    </article>
+    <article class="quizPage" id="quizPageFive">
+      <h2>How does a FOR loop start?</h2>
+      <ul class="wrap">
+        <li class="box" button="radio" id="false"></li>>for (i = 0; i <= 5)</li>
+        <li class="box" button="radio" id="false"></li>>for (i ,=5; i++)</li>
+        <li class="box" button="radio" id="false"></li>>for i = 1 to 5</li>
+        <li class="box" button="radio" id="true"></li>>for (i = 0; i <= 5; i++)</li>
+      </ul>
+    </article>
+
+    <script src="assets/script.js"></script>
+  </body>
+</html>
