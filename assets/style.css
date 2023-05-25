@@ -59,3 +59,7 @@ article h2 {
   border-radius: 5px;
   padding: 20px;
 }
+
+.isHidden {
+  display: none;
+}
