@@ -19,7 +19,10 @@ falseAnswer = false;
 var questions =[
     {
         questionText: "How do you write 'Hello World' in an alert box?", 
-        questionAnswers: ["msgBox('Hello World');", "alertBox('Hello World');", "msg('Hello World');", "alert('Hello World')"],
+        questionAnswers: ["msgBox('Hello World');",
+                            "alertBox('Hello World');", 
+                            "msg('Hello World');", 
+                            "alert('Hello World')"],
         correctAnswer: "alert('Hello World')"
     },
     {
@@ -55,18 +58,20 @@ function renderQuestion() {
     questionText.textContent = currentQuestionObject.questionText;
     var choices = currentQuestionObject.questionAnswers;
     for (var i = 0; i < choices.length; i++) {
-        var response = window.prompt(questions[i].questionAnswers);
-        if(response == correctAnswer[i]) {
+        buttonList.textContent = choices;
+        buttonList.addEventListener("click", answerFeedback)
+        function answerFeedback () {
+        if(buttonList == correctAnswer) {
             window.alert("Correct!");
         } else {
           window.alert("Incorrect!");
             seconds - 5;
         }
-
+        }
         }
         // 1 - TODO: Create a new button
 
-        var currentAnswerObject = choiceText[currentAnswerIndex]
+    
         
         // 2 - TODO: Set the text of the button to be the choice text
 
@@ -92,7 +97,6 @@ startButton.addEventListener("click", function () {
     function setTime() {
       ++Seconds;
       secondCount.innerHTML = Seconds;
-      console.log(Seconds);
       if (Seconds === 5000000) {
         window.alert("Quiz failed, please try again");
       }
