@@ -57,17 +57,30 @@ function renderQuestion() {
     var currentQuestionObject = questions[currentQuestionIndex];
     questionText.textContent = currentQuestionObject.questionText;
     var choices = currentQuestionObject.questionAnswers;
-    for (var i = 0; i < choices.length; i++) {
-        buttonList.textContent = choices;
+    buttonList.textContent = choices;
+    questions.questionAnswers.forEach(element => {
+            var choiceButton = document.createElement("choiceButton");
+            
+        });
+
+
+
+
+
         buttonList.addEventListener("click", answerFeedback)
-        function answerFeedback () {
-        if(buttonList == correctAnswer) {
-            window.alert("Correct!");
-        } else {
-          window.alert("Incorrect!");
-            seconds - 5;
-        }
-        }
+        
+        
+        
+        
+        
+        // function answerFeedback () {
+        // if(buttonList == correctAnswer) {
+        //     window.alert("Correct!");
+        // } else {
+        //   window.alert("Incorrect!");
+        //     seconds - 5;
+        // }
+        // }
         }
         // 1 - TODO: Create a new button
 
