@@ -58,9 +58,21 @@ function renderQuestion() {
     questionText.textContent = currentQuestionObject.questionText;
     var choices = currentQuestionObject.questionAnswers;
     buttonList.textContent = choices;
-    questions.questionAnswers.forEach(element => {
+    questions.questionAnswers.forEach(questionAnswers => {
             var choiceButton = document.createElement("choiceButton");
-            
+            choiceButton.innerText = choices;
+            choiceButton.classList.add("button");
+            if(buttonList == questions[i].correctAnswer) {
+            window.alert("Correct!");
+            } else {
+              window.alert("Incorrect!");
+            seconds - 5;
+       
+            }
+       
+       
+       
+       
         });
 
 
@@ -94,7 +106,7 @@ function renderQuestion() {
 
         // 3 - TODO: Append new button to button list element
         
-    }
+    
 
 
 
