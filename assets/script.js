@@ -9,9 +9,11 @@ var buttonList = document.getElementById("button-list");
 var trueAnswer = document.querySelectorAll("true");
 var falseAnswer = document.querySelectorAll("false");
 var currentQuestionIndex = 0;
-var currentAnswerIndex = 0, 1, 2, 3;
+var currentAnswerIndex = [0, 1, 2, 3];
 trueAnswer = true;
 falseAnswer = false;
+
+
 
 var questions =[
     {
@@ -44,16 +46,29 @@ var questions =[
 
 
 startButton.addEventListener("click", generateQuiz);
+startButton.addEventListener("click", countUpText);
 highScore.addEventListener("click", viewHighScore);
 //trueAnswer.addEventListener("click", trueAnswer.style.backgroundColor="green");
 
-//add a timer 
+//add a timer
+
+function countUpText () {
+    var time = 0;
+    ++time;
+    document.getElementById("count-up").innerHTML = time;
+
+    // if (time === 500000) {
+        
+    // }
+}
+
+
+
 
 function generateQuiz() {
     startPage.classList.add("isHidden");
     quizPage.classList.remove("isHidden");
     renderQuestion();
-
 }
 
 function renderQuestion() {
@@ -67,7 +82,7 @@ function renderQuestion() {
         // 1 - TODO: Create a new button
 
         var currentAnswerObject = choiceText[currentAnswerIndex]
-        questionAnswers.textContent = currentAnswerObject.questionAnswers;
+        
         
 
 
@@ -84,7 +99,6 @@ function renderQuestion() {
 
         // 3 - TODO: Append new button to button list element
         
-        buttonList.append(buttonEl);
     
     }
 
@@ -98,6 +112,10 @@ function renderQuestion() {
 
 
 function viewHighScore() {
+    startPage.classList.add("isHidden");
+    quizPage.classList.add("isHidden");
+    highScore.style.display = "block";
+    highScore.style.color = "black";
 
 }
 
