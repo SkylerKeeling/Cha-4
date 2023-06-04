@@ -1,4 +1,5 @@
 var startButton = document.getElementById("startButton");
+var submitButton = document.getElementById("submitButton");
 var reset = document.getElementById("reset")
 var highScore = document.getElementById("highScore");
 var startPage = document.getElementById("startPage");
@@ -43,28 +44,6 @@ var questions =[
     }
 ];
 
-
-
-startButton.addEventListener("click", generateQuiz);
-startButton.addEventListener("click", countUpText);
-highScore.addEventListener("click", viewHighScore);
-//trueAnswer.addEventListener("click", trueAnswer.style.backgroundColor="green");
-
-//add a timer
-
-function countUpText () {
-    var time = 0;
-    ++time;
-    document.getElementById("count-up").innerHTML = time;
-
-    // if (time === 500000) {
-        
-    // }
-}
-
-
-
-
 function generateQuiz() {
     startPage.classList.add("isHidden");
     quizPage.classList.remove("isHidden");
@@ -76,22 +55,20 @@ function renderQuestion() {
     questionText.textContent = currentQuestionObject.questionText;
     var choices = currentQuestionObject.questionAnswers;
     for (var i = 0; i < choices.length; i++) {
-        var choiceText = choices[i];
-        console.log(choiceText);
-       
+        var response = window.prompt(questions[i].questionAnswers);
+        if(response == correctAnswer[i]) {
+            window.alert("Correct!");
+        } else {
+          window.alert("Incorrect!");
+            seconds - 5;
+        }
+
+        }
         // 1 - TODO: Create a new button
 
         var currentAnswerObject = choiceText[currentAnswerIndex]
         
-        
-
-
-
         // 2 - TODO: Set the text of the button to be the choice text
-
-        
-       
-
 
         // 4 - TODO: Add a click event listener to the button that console logs "Button was clicked"
 
@@ -99,15 +76,45 @@ function renderQuestion() {
 
         // 3 - TODO: Append new button to button list element
         
-    
     }
 
 
-    console.log(currentQuestionObject);
 
+
+Seconds = 0;
+
+startButton.addEventListener("click", generateQuiz);
+startButton.addEventListener("click", function () {
+
+    var secondCount = document.getElementById("count-up");
+    setInterval(setTime, 1000);
+    
+    function setTime() {
+      ++Seconds;
+      secondCount.innerHTML = Seconds;
+      console.log(Seconds);
+      if (Seconds === 5000000) {
+        window.alert("Quiz failed, please try again");
+      }
+    }
+});
+
+
+
+
+highScore.addEventListener("click", viewHighScore);
+// submitButton.addEventListener("click", submitScore);
+//trueAnswer.addEventListener("click", trueAnswer.style.backgroundColor="green");
+
+
+
+function resetButton() {
+    startPage.classList.remove("isHidden");
+    quizPage.classList.add("isHidden");
+    document.querySelectorAll("reset").addEventListener("click", function (){
+        preventDefault();
+    })
 }
-
-
 
 
 
@@ -119,22 +126,17 @@ function viewHighScore() {
 
 }
 
-function resetButton() {
+function submitScore() {
 
-}
-
-
-function returnFalse() {
-    
-    return alert("False");
 
 }
 
 
 
 
-function returnTrue() {
-    return alert("True");
-    }
+
+
+
+
 
     
