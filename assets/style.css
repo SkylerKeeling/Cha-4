@@ -53,7 +53,7 @@ article h2 {
   color: brown;
 }
 
-.box {
+.bt {
   background-color: brown;
   color: beige;
   border-radius: 5px;
@@ -62,7 +62,4 @@ article h2 {
 
 .isHidden {
   display: none;
-}
-
-.button {
 }
