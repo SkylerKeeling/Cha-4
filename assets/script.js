@@ -6,7 +6,7 @@ var startPage = document.getElementById("startPage");
 var quizPage = document.getElementById("quizPage");
 
 var questionText = document.getElementById("question-text");
-var buttonList = document.getElementById("button-list");
+var buttonList;
 var trueAnswer = document.querySelectorAll("true");
 var falseAnswer = document.querySelectorAll("false");
 var currentQuestionIndex = 0;
@@ -57,29 +57,52 @@ function renderQuestion() {
     var currentQuestionObject = questions[currentQuestionIndex];
     questionText.textContent = currentQuestionObject.questionText;
     var choices = currentQuestionObject.questionAnswers;
-    buttonList.textContent = choices;
-    questions.questionAnswers.forEach(questionAnswers => {
-            var choiceButton = document.createElement("choiceButton");
-            choiceButton.innerText = choices;
-            choiceButton.classList.add("button");
-            if(buttonList == questions[i].correctAnswer) {
-            window.alert("Correct!");
-            } else {
-              window.alert("Incorrect!");
-            seconds - 5;
+    var buttonList = "";
+   
+
+    choices[0].createElement("buttonOne");
+    choices[1].createElement("buttonTwo");
+    choices[2].createElement("buttonThree");
+    choices[3].createElement("buttonFour");
+    var buttonOne = getElementById("buttonOne");
+    var buttonTwo = getElementById("buttonTwo");
+    var buttonThree = getElementById("buttonThree");
+    var buttonfour = getElementById("buttonFour");
+    buttonOne.textContent = choices[0];
+    buttonTwo.textContent = choices[1];
+    buttonThree.textContent = choices[2];
+    buttonfour.textContent = choices[3];
+    buttonOne.addEventListener("click", console.log("button clicked"));
+    buttonTwo.addEventListener("click", console.log("button clicked"));
+    buttonThree.addEventListener("click", console.log("button clicked"));
+    buttonFour.addEventListener("click", console.log("button clicked"));
+    buttonList.append("buttonOne", "buttonTwo", "buttonThree", "buttonFour");
+           
+            
        
-            }
        
        
        
-       
-        });
+        };
+
+     
 
 
 
 
 
-        buttonList.addEventListener("click", answerFeedback)
+
+
+        // if(buttonList == questions[i].correctAnswer) {
+        //     window.alert("Correct!");
+        //     } else {
+        //       window.alert("Incorrect!");
+        //     seconds - 5;
+       
+
+
+
+       
         
         
         
@@ -93,7 +116,7 @@ function renderQuestion() {
         //     seconds - 5;
         // }
         // }
-        }
+        
         // 1 - TODO: Create a new button
 
     
