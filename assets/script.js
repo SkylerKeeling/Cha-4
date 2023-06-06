@@ -134,13 +134,15 @@ startButton.addEventListener("click", createNextButton);
 
 
 function createNextButton () {
-    const nextButton = document.createElement("nextButton");
+    const nextButton = document.createElement("button");
     nextButton.textContent = "next";
     nextButton.classList.add("next");
     answerOptions.appendChild(nextButton);
     nextButton.addEventListener("click", next);
     function next () {
-    currentQuestionIndex++;
+    return currentQuestionIndex++;
+
+   
 }
 
 }
