@@ -1,6 +1,5 @@
 var startButton = document.getElementById("startButton");
 var submitButton = document.getElementById("submitButton");
-var resetButton = document.getElementById("resetButton");
 var highScore = document.getElementById("highScore");
 var startPage = document.getElementById("startPage");
 var quizPage = document.getElementById("quizPage");
@@ -16,7 +15,7 @@ falseAnswer = false;
 
 seconds = 0;
 
-resetButton.addEventListener("click", reset);
+
 highScore.addEventListener("click", viewHighScore);
 startButton.addEventListener("click", generateQuiz);
 startButton.addEventListener("click", function () {
@@ -110,6 +109,7 @@ function renderQuestion() {
 var answerContainer = document.getElementById("answer-options");
 
 function userAnswer(event) {
+  for (var i = 0; i < questions.length;i++);
   let answerBtn = event.target;
 
   let results = questions[0].correctAnswer;
@@ -122,15 +122,18 @@ function userAnswer(event) {
   if (answerBtn.innerHTML !== results) {
     console.log("incorrect");
     document.body.style.backgroundColor = "red";
+    document.getElementById("answer-options").style.backgroundColor = "red";
   } else {
     console.log("correct");
     document.body.style.backgroundColor = "green";
+    document.getElementById("answer-options").style.backgroundColor = "green";
     seconds - 5;
   }
 }
 
 answerContainer.addEventListener("click", userAnswer);
 startButton.addEventListener("click", createNextButton);
+startButton.addEventListener("click", submitButton);
 
 
 function createNextButton () {
@@ -140,10 +143,39 @@ function createNextButton () {
     answerOptions.appendChild(nextButton);
     nextButton.addEventListener("click", next);
     function next () {
-    return currentQuestionIndex++;
-
-   
+    currentQuestionIndex++;
+    answerOptions.innerHTML = "";
+    document.body.style.backgroundColor = "bisque";
+    document.getElementById("answer-options").style.backgroundColor = "bisque";
+    renderQuestion();
+    createNextButton();
+  }
 }
+
+let usernameInput = document.querySelectorAll("username");
+
+
+function submitButton () {
+    const submitButton = document.createElement("button");
+    submitButton.textContent = "submit";
+    submitButton.classList.add("next");
+    answerOptions.appendChild(submitButton);
+  }
+
+submitButton.addEventListener("click", displayMessage);
+
+function displayMessage () {
+  let usernameInput = document.querySelectorAll("username");
+  usernameInput = prompt("please enter username: ");
+  localStorage.setItem("username", usernameInput);
+
+
+}
+
+function registerHighscore () {
+  
+
+
 
 }
 
@@ -153,12 +185,6 @@ function createNextButton () {
 highScore.addEventListener("click", viewHighScore);
 // submitButton.addEventListener("click", submitScore);
 //trueAnswer.addEventListener("click", trueAnswer.style.backgroundColor="green");
-
-function reset() {
-  startPage.classList.remove("isHidden");
-  quizPage.classList.add("isHidden");
-  seconds = 0;
-}
 
 function viewHighScore() {
   startPage.classList.add("isHidden");
