@@ -74,8 +74,9 @@ article h2 {
   width: fit-content;
 }
 
-table,
-th,
-td {
-  border: 1px solid;
+.table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid;
 }

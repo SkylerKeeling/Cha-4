@@ -7,14 +7,11 @@ let answerOptions = document.getElementById("answer-options");
 var questionText = document.getElementById("question-text");
 let table =document.getElementById("table");
 var buttonList = "";
-var trueAnswer = document.querySelectorAll("true");
-var falseAnswer = document.querySelectorAll("false");
 var currentQuestionIndex = 0;
 var currentAnswerIndex = [0, 1, 2, 3, 4];
-trueAnswer = true;
-falseAnswer = false;
 
-seconds = 0;
+
+seconds = 300;
 
 startButton.addEventListener("click", generateQuiz);
 startButton.addEventListener("click", function () {
@@ -22,11 +19,8 @@ startButton.addEventListener("click", function () {
   setInterval(setTime, 1000);
 
   function setTime() {
-    ++seconds;
+    --seconds;
     secondCount.innerHTML = seconds;
-    if (seconds === 5000000) {
-      window.alert("Quiz failed, please try again");
-    }
   }
 });
 
@@ -123,9 +117,7 @@ function userAnswer(event) {
     console.log("incorrect");
     document.body.style.backgroundColor = "red";
     document.getElementById("answer-options").style.backgroundColor = "red";
-    secondCount = secondCount - 5;
-    //or
-    document.getElementById("count-up").innerHTML = secondCount - 5;
+    seconds= seconds - 5;
   } else {
     console.log("correct");
     document.body.style.backgroundColor = "green";
@@ -184,18 +176,18 @@ highScore.addEventListener("click", showHighscore);
 function showHighscore () {
   startPage.classList.add("isHidden");
   quizPage.classList.add("isHidden");
-  document.getElementById("table").classList.remove("isHidden");
-
-
+  table.classList.remove("isHidden");
+  table.classList.add("table");
 
   let displayedUsername = localStorage.getItem("username");
   let displayedScore = localStorage.getItem("seconds");
 
   if (displayedUsername  && displayedScore !== null) {
-  document.getElementById("table-row-username").innerText = "Username:";
-  document.getElementById("table-row-score").innerText = "score";
-  document.getElementById("table-username").innerText = displayedUsername;
-  document.getElementById("table-score").innertext = displayedScore;
+  document.getElementById("table-header").innerText = "Highscore"
+  document.getElementById("table-row-username").innerText = "Username: ";
+  document.getElementById("table-row-score").innerText = "score: ";
+  document.getElementById("table-username").innerText = displayedUsername.value;
+  document.getElementById("table-score").innertext = displayedScore.value;
   
 
 }}
