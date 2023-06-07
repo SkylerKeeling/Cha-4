@@ -10,6 +10,8 @@ Within the quiz, there is a start button that initiates the test. Once intiated,
 
 ## Screenshot
 
+![alt text]
+
 ## Referances
 
 The questions about JavaScript are from https://www.w3schools.com/.
