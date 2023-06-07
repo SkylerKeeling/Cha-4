@@ -10,7 +10,7 @@ var buttonList = "";
 var trueAnswer = document.querySelectorAll("true");
 var falseAnswer = document.querySelectorAll("false");
 var currentQuestionIndex = 0;
-var currentAnswerIndex = [0, 1, 2, 3];
+var currentAnswerIndex = [0, 1, 2, 3, 4];
 trueAnswer = true;
 falseAnswer = false;
 
@@ -78,9 +78,9 @@ var questions = [
       "for (i = 0; i <= 5)",
       "for (i ,=5; i++)",
       "for i = 1 to 5",
-      "for (i = 0; i <= 5; i++)",
+      "for (var i = 0; i <= 5; i++)",
     ],
-    correctAnswer: "for (i = 0; i <= 5; i++)",
+    correctAnswer: "for (var i = 0; i <= 5; i++)",
   },
 ];
 
@@ -107,26 +107,30 @@ function renderQuestion() {
 
 var answerContainer = document.getElementById("answer-options");
 
+
 function userAnswer(event) {
-  for (var i = 0; i < questions.length;i++);
+
   let answerBtn = event.target;
 
-  let results = questions[0].correctAnswer;
+  let results = questions[currentQuestionIndex].correctAnswer;
 
   if (!answerBtn.matches(".bt")) {
     console.log("not a answer");
     return;
   }
 
-  if (answerBtn.innerHTML !== results) {
+  if (answerBtn.textContent !== results) {
     console.log("incorrect");
     document.body.style.backgroundColor = "red";
     document.getElementById("answer-options").style.backgroundColor = "red";
+    secondCount = secondCount - 5;
+    //or
+    document.getElementById("count-up").innerHTML = secondCount - 5;
   } else {
     console.log("correct");
     document.body.style.backgroundColor = "green";
     document.getElementById("answer-options").style.backgroundColor = "green";
-    seconds - 5;
+    
   }
 }
 
@@ -141,6 +145,7 @@ function createNextButton () {
     nextButton.classList.add("next");
     answerOptions.appendChild(nextButton);
     nextButton.addEventListener("click", next);
+    nextButton.addEventListener("click", createSubmitButton);
     function next () {
     currentQuestionIndex++;
     answerOptions.innerHTML = "";
@@ -148,11 +153,11 @@ function createNextButton () {
     document.getElementById("answer-options").style.backgroundColor = "bisque";
     renderQuestion();
     createNextButton();
-    startButton.addEventListener("click", createSubmitButton);
   }
 }
 
 let usernameInput = document.querySelectorAll("username");
+
 
 
 
