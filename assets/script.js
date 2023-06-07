@@ -5,6 +5,7 @@ var startPage = document.getElementById("startPage");
 var quizPage = document.getElementById("quizPage");
 let answerOptions = document.getElementById("answer-options");
 var questionText = document.getElementById("question-text");
+let table =document.getElementById("table");
 var buttonList = "";
 var trueAnswer = document.querySelectorAll("true");
 var falseAnswer = document.querySelectorAll("false");
@@ -15,8 +16,6 @@ falseAnswer = false;
 
 seconds = 0;
 
-
-highScore.addEventListener("click", viewHighScore);
 startButton.addEventListener("click", generateQuiz);
 startButton.addEventListener("click", function () {
   var secondCount = document.getElementById("count-up");
@@ -133,7 +132,7 @@ function userAnswer(event) {
 
 answerContainer.addEventListener("click", userAnswer);
 startButton.addEventListener("click", createNextButton);
-startButton.addEventListener("click", submitButton);
+startButton.addEventListener("click", createSubmitButton);
 
 
 function createNextButton () {
@@ -149,48 +148,55 @@ function createNextButton () {
     document.getElementById("answer-options").style.backgroundColor = "bisque";
     renderQuestion();
     createNextButton();
+    startButton.addEventListener("click", createSubmitButton);
   }
 }
 
 let usernameInput = document.querySelectorAll("username");
 
 
-function submitButton () {
-    const submitButton = document.createElement("button");
-    submitButton.textContent = "submit";
-    submitButton.classList.add("next");
-    answerOptions.appendChild(submitButton);
+
+function createSubmitButton () {
+    const createSubmitButton = document.createElement("button");
+    createSubmitButton.textContent = "submit";
+    createSubmitButton.classList.add("next");
+    answerOptions.appendChild(createSubmitButton);
+  
+    createSubmitButton.addEventListener("click", registerScoreMessage);
+
+    function registerScoreMessage () {
+      let usernameInput = document.querySelectorAll("username");
+      usernameInput = prompt("please enter username: ");
+      localStorage.setItem("username", usernameInput);
+      localStorage.setItem("seconds", seconds);
+    } 
   }
 
-submitButton.addEventListener("click", displayMessage);
-
-function displayMessage () {
-  let usernameInput = document.querySelectorAll("username");
-  usernameInput = prompt("please enter username: ");
-  localStorage.setItem("username", usernameInput);
 
 
-}
+highScore.addEventListener("click", showHighscore);
 
-function registerHighscore () {
-  
-
-
-
-}
-
-
-
-
-highScore.addEventListener("click", viewHighScore);
-// submitButton.addEventListener("click", submitScore);
-//trueAnswer.addEventListener("click", trueAnswer.style.backgroundColor="green");
-
-function viewHighScore() {
+function showHighscore () {
   startPage.classList.add("isHidden");
   quizPage.classList.add("isHidden");
-  highScore.style.display = "block";
-  highScore.style.color = "black";
-}
+  document.getElementById("table").classList.remove("isHidden");
 
-function submitScore() {}
+
+
+  let displayedUsername = localStorage.getItem("username");
+  let displayedScore = localStorage.getItem("seconds");
+
+  if (displayedUsername  && displayedScore !== null) {
+  document.getElementById("table-row-username").innerText = "Username:";
+  document.getElementById("table-row-score").innerText = "score";
+  document.getElementById("table-username").innerText = displayedUsername;
+  document.getElementById("table-score").innertext = displayedScore;
+  
+
+}}
+
+
+
+
+
+

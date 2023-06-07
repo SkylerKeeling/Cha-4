@@ -73,3 +73,9 @@ article h2 {
   padding: 10px;
   width: fit-content;
 }
+
+table,
+th,
+td {
+  border: 1px solid;
+}
