@@ -5,11 +5,10 @@ var startPage = document.getElementById("startPage");
 var quizPage = document.getElementById("quizPage");
 let answerOptions = document.getElementById("answer-options");
 var questionText = document.getElementById("question-text");
-let table =document.getElementById("table");
+let table = document.getElementById("table");
 var buttonList = "";
 var currentQuestionIndex = 0;
 var currentAnswerIndex = [0, 1, 2, 3, 4];
-
 
 seconds = 300;
 
@@ -101,9 +100,7 @@ function renderQuestion() {
 
 var answerContainer = document.getElementById("answer-options");
 
-
 function userAnswer(event) {
-
   let answerBtn = event.target;
 
   let results = questions[currentQuestionIndex].correctAnswer;
@@ -117,12 +114,11 @@ function userAnswer(event) {
     console.log("incorrect");
     document.body.style.backgroundColor = "red";
     document.getElementById("answer-options").style.backgroundColor = "red";
-    seconds= seconds - 5;
+    seconds = seconds - 5;
   } else {
     console.log("correct");
     document.body.style.backgroundColor = "green";
     document.getElementById("answer-options").style.backgroundColor = "green";
-    
   }
 }
 
@@ -130,15 +126,14 @@ answerContainer.addEventListener("click", userAnswer);
 startButton.addEventListener("click", createNextButton);
 startButton.addEventListener("click", createSubmitButton);
 
-
-function createNextButton () {
-    const nextButton = document.createElement("button");
-    nextButton.textContent = "next";
-    nextButton.classList.add("next");
-    answerOptions.appendChild(nextButton);
-    nextButton.addEventListener("click", next);
-    nextButton.addEventListener("click", createSubmitButton);
-    function next () {
+function createNextButton() {
+  const nextButton = document.createElement("button");
+  nextButton.textContent = "next";
+  nextButton.classList.add("next");
+  answerOptions.appendChild(nextButton);
+  nextButton.addEventListener("click", next);
+  nextButton.addEventListener("click", createSubmitButton);
+  function next() {
     currentQuestionIndex++;
     answerOptions.innerHTML = "";
     document.body.style.backgroundColor = "bisque";
@@ -150,30 +145,25 @@ function createNextButton () {
 
 let usernameInput = document.querySelectorAll("username");
 
+function createSubmitButton() {
+  const createSubmitButton = document.createElement("button");
+  createSubmitButton.textContent = "submit";
+  createSubmitButton.classList.add("next");
+  answerOptions.appendChild(createSubmitButton);
 
+  createSubmitButton.addEventListener("click", registerScoreMessage);
 
-
-function createSubmitButton () {
-    const createSubmitButton = document.createElement("button");
-    createSubmitButton.textContent = "submit";
-    createSubmitButton.classList.add("next");
-    answerOptions.appendChild(createSubmitButton);
-  
-    createSubmitButton.addEventListener("click", registerScoreMessage);
-
-    function registerScoreMessage () {
-      let usernameInput = document.querySelectorAll("username");
-      usernameInput = prompt("please enter username: ");
-      localStorage.setItem("username", usernameInput);
-      localStorage.setItem("seconds", seconds);
-    } 
+  function registerScoreMessage() {
+    let usernameInput = document.querySelectorAll("username");
+    usernameInput = prompt("please enter username: ");
+    localStorage.setItem("username", usernameInput);
+    localStorage.setItem("seconds", seconds);
   }
-
-
+}
 
 highScore.addEventListener("click", showHighscore);
 
-function showHighscore () {
+function showHighscore() {
   startPage.classList.add("isHidden");
   quizPage.classList.add("isHidden");
   table.classList.remove("isHidden");
@@ -182,18 +172,12 @@ function showHighscore () {
   let displayedUsername = localStorage.getItem("username");
   let displayedScore = localStorage.getItem("seconds");
 
-  if (displayedUsername  && displayedScore !== null) {
-  document.getElementById("table-header").innerText = "Highscore"
-  document.getElementById("table-row-username").innerText = "Username: ";
-  document.getElementById("table-row-score").innerText = "score: ";
-  document.getElementById("table-username").innerText = displayedUsername.value;
-  document.getElementById("table-score").innertext = displayedScore.value;
-  
+  if (displayedUsername && displayedScore !== null) {
+    document.getElementById("table-row-username").innerText = "Username: ";
+    document.getElementById("table-row-score").innerText = "score: ";
+    document.getElementById("table-username").innerText = displayedUsername;
+    document.getElementById("table-score").innerText = displayedScore;
 
-}}
-
-
-
-
-
-
+    console.log(displayedUsername, displayedScore);
+  }
+}
